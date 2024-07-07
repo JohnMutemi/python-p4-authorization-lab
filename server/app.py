@@ -93,7 +93,7 @@ class MemberOnlyArticle(Resource):
         article = Article.query.filter_by(id=id, is_member_only=True).first()
         if article:
             return make_response(jsonify(article.to_dict()), 200)
-        return {'error': 'Article not found or not member-only'}, 404
+        return {'error': 'Article not found'}, 404
 
 api.add_resource(ClearSession, '/clear', endpoint='clear')
 api.add_resource(IndexArticle, '/articles', endpoint='article_list')
